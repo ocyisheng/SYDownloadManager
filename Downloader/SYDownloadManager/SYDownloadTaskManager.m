@@ -14,7 +14,7 @@
 @interface SYDownloadTaskManager ()<NSURLSessionDataDelegate>
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSOperationQueue *downloadOperationQueue;
-@property (nonatomic,strong) SYDownloadTaskStore *taskStore;//数据储存的
+@property (nonatomic, strong) SYDownloadTaskStore *taskStore;//数据储存的
 @end
 
 @implementation SYDownloadTaskManager
@@ -28,6 +28,9 @@
         _taskStore = [[SYDownloadTaskStore alloc]init];
         _downloadOperationQueue = [[NSOperationQueue alloc]init];
         _downloadOperationQueue.maxConcurrentOperationCount = _maxTaskCount;
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        config.allowsCellularAccess = NO;
+        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[[NSOperationQueue alloc]init]];
     }
     return self;
 }
@@ -65,28 +68,11 @@
         [self _setTaskState:SYDownloadTaskStateSuspend forURL:url];
     }
 }
-- (void)wwanMessageAlertWithMessage:(NSString *)message actionTitles:(NSArray <NSString *> *)titles actionHandle:(void(^)(NSUInteger actionIndex))actionHandle{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:titles[0] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        if (actionHandle) {
-            actionHandle(0);
-        }
-    }];
-    UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:titles[1] style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        if (actionHandle) {
-            actionHandle(1);
-        }
-    }];
-    [alertController addAction:okAction];
-    [alertController addAction:cancleAction];
-    
-    [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:alertController animated:YES completion:nil];
-}
 - (void)resumeTaskWithURLStr:(NSString *)url{
     SYDownloadTaskModel *model = [self.taskStore taskModelWithURL:url];
     if (model.state == SYDownloadTaskStateAdded || model.state == SYDownloadTaskStateSuspend || model.state == SYDownloadTaskStateFail) {
         NSMutableURLRequest *httpRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-        [httpRequest setValue:[NSString stringWithFormat:@"bytes=%ld-",model.currentSize] forHTTPHeaderField:@"range"];
+        [httpRequest setValue:[NSString stringWithFormat:@"bytes=%lld-",model.currentSize] forHTTPHeaderField:@"range"];
         NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:[httpRequest copy]];
         SYDownloadTaskOperation *taskOp = [self _taskOperationWithURLStr:url];
         if (taskOp == nil) {
@@ -106,11 +92,12 @@
 - (void)setAllowsCellularAccess:(BOOL)allowsCellularAccess{
     _allowsCellularAccess = allowsCellularAccess;
     if (_allowsCellularAccess == NO) {
+        [self.downloadOperationQueue cancelAllOperations];
         [self.downloadOperationQueue.syDelay_operations enumerateObjectsUsingBlock:^(NSOperation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             SYDownloadTaskOperation *operation = (SYDownloadTaskOperation *)obj;
             [self.downloadOperationQueue syDelay_removeOperation:operation];
-            [obj cancel];
-            [self _setTaskState:SYDownloadTaskStateSuspend forURL:operation.identify];
+            [operation suspendTask];
+             [self _setTaskState:SYDownloadTaskStateSuspend forURL:operation.identify];
         }];
     }
     self.session.configuration.allowsCellularAccess = allowsCellularAccess;
@@ -132,6 +119,23 @@
         }
     }];
     return taskOp;
+}
+- (void)_alertWithMessage:(NSString *)message actionTitles:(NSArray <NSString *> *)titles actionHandle:(void(^)(NSUInteger actionIndex))actionHandle{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:titles[0] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (actionHandle) {
+            actionHandle(0);
+        }
+    }];
+    UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:titles[1] style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if (actionHandle) {
+            actionHandle(1);
+        }
+    }];
+    [alertController addAction:okAction];
+    [alertController addAction:cancleAction];
+    
+    [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 
@@ -158,10 +162,10 @@ didCompleteWithError:(nullable NSError *)error{
         [self _setTaskState:SYDownloadTaskStateFinshed forURL:url];
     }else{
         // -1009无网 -1001超时 -999取消
-        //并未取消任务
+         //并未取消任务
         if (error.code != -999) {
             if (error.code == -1009 && self.allowsCellularAccess == NO) {
-                [self wwanMessageAlertWithMessage:@"已禁止移动网络数据传输" actionTitles:@[@"取消",@"允许"] actionHandle:^(NSUInteger actionIndex) {
+                [self _alertWithMessage:@"已禁止移动网络数据传输" actionTitles:@[@"取消",@"允许"] actionHandle:^(NSUInteger actionIndex) {
                     if (actionIndex == 1) {
                         [self setAllowsCellularAccess:YES];
                         //取消session
@@ -199,17 +203,6 @@ didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler{
     //重定向
     completionHandler(request);
-}
-
-- (NSURLSession *)session{
-    if (_session == nil) {
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        //不允许4G
-        config.allowsCellularAccess = _allowsCellularAccess;
-        //使用操作队列
-        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[[NSOperationQueue alloc]init]];
-    }
-    return _session;
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSOperationQueue (SYDelayAddOperation)
-
+//https://github.com/ocyisheng/SYDownloadManager.git
 /*
  
  这里这些方法可以解决，自定义operation在queue中处于ready状态，但并没有excuting,而此时有想要取消operation，而出现报错

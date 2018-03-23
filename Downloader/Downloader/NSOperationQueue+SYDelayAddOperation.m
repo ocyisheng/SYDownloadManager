@@ -10,7 +10,8 @@
 #import <objc/runtime.h>
 
 @interface SYOperationQueueObsever : NSObject
-@property (nonatomic, assign) NSOperationQueue *operationQueue;//观察它的operationCount
+//防止循环引用
+@property (nonatomic, weak) NSOperationQueue *operationQueue;//观察它的operationCount
 @end
 
 @interface NSOperationQueue ()
@@ -39,7 +40,6 @@
                       ofObject:(id)object
                         change:(NSDictionary<NSKeyValueChangeKey,id> *)change
                        context:(void *)context{
-    
     
     NSString *conextStr = (__bridge NSString *)(context);
     if ([keyPath isEqualToString:@"operationCount"] && [conextStr isEqualToString:@"DelayAddOperationContextKey"]) {

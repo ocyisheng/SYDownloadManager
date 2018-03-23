@@ -14,7 +14,7 @@
 @interface SYDownloadTaskManager ()<NSURLSessionDataDelegate>
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSOperationQueue *downloadOperationQueue;
-@property (nonatomic,strong) SYDownloadTaskStore *taskStore;//数据储存的
+@property (nonatomic, strong) SYDownloadTaskStore *taskStore;//数据储存的
 @end
 
 @implementation SYDownloadTaskManager
@@ -72,7 +72,7 @@
     SYDownloadTaskModel *model = [self.taskStore taskModelWithURL:url];
     if (model.state == SYDownloadTaskStateAdded || model.state == SYDownloadTaskStateSuspend || model.state == SYDownloadTaskStateFail) {
         NSMutableURLRequest *httpRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-        [httpRequest setValue:[NSString stringWithFormat:@"bytes=%ld-",model.currentSize] forHTTPHeaderField:@"range"];
+        [httpRequest setValue:[NSString stringWithFormat:@"bytes=%lld-",model.currentSize] forHTTPHeaderField:@"range"];
         NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:[httpRequest copy]];
         SYDownloadTaskOperation *taskOp = [self _taskOperationWithURLStr:url];
         if (taskOp == nil) {
@@ -96,7 +96,7 @@
         [self.downloadOperationQueue.syDelay_operations enumerateObjectsUsingBlock:^(NSOperation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             SYDownloadTaskOperation *operation = (SYDownloadTaskOperation *)obj;
             [self.downloadOperationQueue syDelay_removeOperation:operation];
-            [obj cancel];
+            [operation suspendTask];
              [self _setTaskState:SYDownloadTaskStateSuspend forURL:operation.identify];
         }];
     }

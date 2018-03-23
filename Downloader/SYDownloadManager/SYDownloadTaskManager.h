@@ -10,13 +10,12 @@
 #import "SYDownloadTaskModel.h"
 
 @interface SYDownloadTaskManager : NSObject
-
 @property (nonatomic, assign) NSUInteger maxTaskCount;
 @property (nonatomic, copy) void(^downloadTaskCompletionHandle)(NSString *url, NSString *locationPath);
 @property (nonatomic, copy) void(^downloadTaskProgressHandle)(NSString *url, float progress);
 @property (nonatomic, copy) void(^downloadTaskStateChangedHandle)(SYDownloadTaskModel *model);
-
 @property (nonatomic, assign) BOOL allowsCellularAccess;//移动网络
+
 - (void)addTaskWithURLStr:(NSString *)url
                      type:(NSString *)type;
 

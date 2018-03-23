@@ -10,7 +10,8 @@
 #import <objc/runtime.h>
 
 @interface SYOperationQueueObsever : NSObject
-@property (nonatomic, assign) NSOperationQueue *operationQueue;//观察它的operationCount
+//防止循环引用
+@property (nonatomic, weak) NSOperationQueue *operationQueue;//观察它的operationCount
 @end
 
 @interface NSOperationQueue ()
@@ -40,7 +41,6 @@
                         change:(NSDictionary<NSKeyValueChangeKey,id> *)change
                        context:(void *)context{
     
-    
     NSString *conextStr = (__bridge NSString *)(context);
     if ([keyPath isEqualToString:@"operationCount"] && [conextStr isEqualToString:@"DelayAddOperationContextKey"]) {
         NSNumber *counts = change[NSKeyValueChangeNewKey];
@@ -59,6 +59,7 @@
 
 - (void)syDelay_removeOperation:(NSOperation *)operation{
     if ([self.sy_waitingOperations containsObject:operation]) {
+        //只需从等待数组中移除，self.operations 中的operation会在该operation finished后自动移除，且operation减1
          [self.sy_waitingOperations removeObject:operation];
     }
 }

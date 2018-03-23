@@ -17,7 +17,7 @@
 @property (nonatomic, assign) BOOL allowsCellularAccess;//移动网络
 
 - (void)addTaskWithURLStr:(NSString *)url
-                 type:(NSString *)type;
+                     type:(NSString *)type;
 
 - (void)suspendTaskWithURLStr:(NSString *)url;
 

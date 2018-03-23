@@ -8,7 +8,7 @@
 
 #import "SYDownloadTaskStore.h"
 #import <UIKit/UIKit.h>
-#import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonDigest.h> 
 
 @interface SYDownloadTaskStore ()
 @property (nonatomic, strong) NSMutableDictionary <NSString *,NSOutputStream *> *outputStreamDic;
@@ -23,7 +23,7 @@
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActiveNotification) name:UIApplicationWillResignActiveNotification object:nil];
-    }
+        }
     return self;
 }
 - (void)willResignActiveNotification{
@@ -32,7 +32,7 @@
 }
 - (void)deleteTaskModelWithURLStr:(NSString *)url{
     NSString *cachePath = [self cacheFilePathWithURL:url];
-    [self.taskModelDic removeObjectForKey:url];
+     [self.taskModelDic removeObjectForKey:url];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
     });
@@ -50,8 +50,8 @@
 - (void)openOutputStreamWithResponse:(NSURLResponse *)response forURL:(NSString *)url;{
     SYDownloadTaskModel *model = [self.taskModelDic objectForKey:url];
     if (model.currentSize == 0) {
-        //注意这里的是根据range返回的其余的数据量
-        model.totalSize = response.expectedContentLength;
+        //注意这里的是根据range返回的剩余的数据量
+         model.totalSize = response.expectedContentLength;
     }
     NSOutputStream  *stream = [NSOutputStream outputStreamToFileAtPath:[self cacheFilePathWithURL:url] append:YES];
     [stream open];
@@ -63,7 +63,7 @@
 - (void)appenOutputStreamWithData:(NSData *)data forURL:(NSString *)url{
     NSOutputStream  *stream = [self.outputStreamDic objectForKey:url];
     [stream write:data.bytes maxLength:data.length];
-    SYDownloadTaskModel *model = [self.taskModelDic objectForKey:url];
+     SYDownloadTaskModel *model = [self.taskModelDic objectForKey:url];
     model.currentSize += data.length;
     if (model.totalSize > 0) {
         model.progress = (float)model.currentSize / model.totalSize;
@@ -90,7 +90,6 @@
     }
     return _outputStreamDic;
 }
-
 
 - (NSMutableDictionary <NSString *,SYDownloadTaskModel*> *)taskModelDic{
     if (_taskModelDic == nil) {

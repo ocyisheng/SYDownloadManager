@@ -31,9 +31,9 @@ typedef NS_ENUM(NSInteger,SYDownloadTaskState) {
 //缓存文件名称
 @property (nonatomic, copy) NSString *cacheFileName;
 //总大小
-@property (nonatomic, assign) NSUInteger totalSize;
+@property (nonatomic, assign) long long totalSize;
 //当前下载大小
-@property (nonatomic, assign) NSUInteger currentSize;
+@property (nonatomic, assign) long long currentSize;
 //进度状况
 @property (nonatomic, assign) float progress;
 //状态
