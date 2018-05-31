@@ -75,8 +75,8 @@
 }
 - (void)cancel{
     //取消
-    [super cancel];
     [self willChangeValueForKey:NSStringFromSelector(@selector(isCancelled))];
+    _cancelled = YES;
     [self.dataTask cancel];
     self.dataTask = nil;
     [self didChangeValueForKey:NSStringFromSelector(@selector(isCancelled))];

@@ -10,17 +10,17 @@
 
 typedef NS_ENUM(NSInteger,SYDownloadTaskState) {
     //已添加，需要调用开始
-    SYDownloadTaskStateAdded = 1,
+    SYDownloadTaskStateAdded        = 1,
     //下载中
-    SYDownloadTaskStateDownloading,
+    SYDownloadTaskStateDownloading  = 2,
     //暂停
-    SYDownloadTaskStateSuspend,
+    SYDownloadTaskStateSuspend      = 3,
     //完成
-    SYDownloadTaskStateFinshed,
+    SYDownloadTaskStateFinshed      = 4,
     //等待
-    SYDownloadTaskStateWaiting,//在队列中等待下载，这些是可以自动开始下载的任务
+    SYDownloadTaskStateWaiting      = 5,//在队列中等待下载，这些是可以自动开始下载的任务
     //失败
-    SYDownloadTaskStateFail,
+    SYDownloadTaskStateFail         = 6,
 
 };
 @interface SYDownloadTaskModel : NSObject<NSCoding>
@@ -38,8 +38,4 @@ typedef NS_ENUM(NSInteger,SYDownloadTaskState) {
 @property (nonatomic, assign) float progress;
 //状态
 @property (nonatomic, assign) SYDownloadTaskState state;
-//本地存储
-+ (void)archiveObject:(id)object toPath:(NSString *)path;
-//本地读取
-+ (id)unArchiveObjectFromPath:(NSString *)path;
 @end

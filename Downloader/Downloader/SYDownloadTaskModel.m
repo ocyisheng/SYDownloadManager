@@ -39,10 +39,5 @@
     }
     return self;
 }
-+ (void)archiveObject:(id)object toPath:(NSString *)path{
-    [NSKeyedArchiver archiveRootObject:object toFile:path];
-}
-+ (id)unArchiveObjectFromPath:(NSString *)path{
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-}
+
 @end

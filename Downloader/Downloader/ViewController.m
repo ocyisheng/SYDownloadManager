@@ -101,14 +101,14 @@
             }
         });
     };
-    _urls = @[@"http://app.datuhongan.com/uploads/video/201612/cymg.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/dsxk.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/fchf.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/gyf.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/gdpl.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/hp.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/jxdbp.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/sq.mp4",
+    _urls = @[@"http://mmm.xunleiziyuan.net/1712/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E03.mp4",
+                       @"http://ooo.xunleiziyuan.net/1712/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E05.mp4",
+                       @"http://ooo.xunleiziyuan.net/1712/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E04.mp4",
+                       @"http://zuidazy.xunleiziyuan.net/1801/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E06.mp4",
+                       @"http://zuidazy.xunleiziyuan.net/1801/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E07.mp4",
+                       @"http://xunleia.zuida360.com/1801/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E08.mp4",
+                       @"http://xunleia.zuida360.com/1801/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E09.mp4",
+                       @"http://xunleia.zuida360.com/1802/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E10.mp4",
                        @"http://app.datuhongan.com/uploads/video/201612/ld.mp4",
                        @"http://app.datuhongan.com/uploads/video/201612/rrz.mp4",
                        @"http://app.datuhongan.com/uploads/video/201612/sybzxls.mp4",

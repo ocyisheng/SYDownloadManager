@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface SYDownloadTaskOperation : NSOperation
+///url作为identify
 @property (nonatomic, copy, readonly) NSString *identify;
 ///添加任务
 - (instancetype)initWithDataTask:(NSURLSessionDataTask *)dataTask;

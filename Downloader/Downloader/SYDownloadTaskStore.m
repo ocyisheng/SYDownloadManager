@@ -28,7 +28,7 @@
 }
 - (void)willResignActiveNotification{
     //储存model
-    [SYDownloadTaskModel archiveObject:self.taskModelDic toPath:[self.cacheDirect stringByAppendingPathComponent:@"downloadTask_archives"]];
+    [SYDownloadTaskStore archiveObject:self.taskModelDic toPath:[self.cacheDirect stringByAppendingPathComponent:@"downloadTask_archives"]];
 }
 - (void)deleteTaskModelWithURLStr:(NSString *)url{
     NSString *cachePath = [self cacheFilePathWithURL:url];
@@ -37,7 +37,8 @@
         [[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
     });
 }
-- (void)addTaskModeWithURLStr:(NSString *)url type:(NSString *)type{
+- (void)addTaskModeWithURLStr:(NSString *)url
+                         type:(NSString *)type{
     if ([self.taskModelDic objectForKey:url] == nil) {
         SYDownloadTaskModel *model = [SYDownloadTaskModel new];
         model.url = url;
@@ -47,7 +48,8 @@
     }
 }
 
-- (void)openOutputStreamWithResponse:(NSURLResponse *)response forURL:(NSString *)url;{
+- (void)openOutputStreamWithResponse:(NSURLResponse *)response
+                              forURL:(NSString *)url;{
     SYDownloadTaskModel *model = [self.taskModelDic objectForKey:url];
     if (model.currentSize == 0) {
         //注意这里的是根据range返回的剩余的数据量
@@ -60,7 +62,8 @@
 - (NSString *)cacheFilePathWithURL:(NSString *)url{
     return [self.cacheDirect stringByAppendingPathComponent:[self.taskModelDic objectForKey:url].cacheFileName];
 }
-- (void)appenOutputStreamWithData:(NSData *)data forURL:(NSString *)url{
+- (void)appenOutputStreamWithData:(NSData *)data
+                           forURL:(NSString *)url{
     NSOutputStream  *stream = [self.outputStreamDic objectForKey:url];
     [stream write:data.bytes maxLength:data.length];
      SYDownloadTaskModel *model = [self.taskModelDic objectForKey:url];
@@ -93,7 +96,7 @@
 
 - (NSMutableDictionary <NSString *,SYDownloadTaskModel*> *)taskModelDic{
     if (_taskModelDic == nil) {
-        _taskModelDic = [SYDownloadTaskModel unArchiveObjectFromPath:[self.cacheDirect stringByAppendingPathComponent:@"downloadTask_archives"]];
+        _taskModelDic = [SYDownloadTaskStore unArchiveObjectFromPath:[self.cacheDirect stringByAppendingPathComponent:@"downloadTask_archives"]];
         [_taskModelDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, SYDownloadTaskModel * _Nonnull obj, BOOL * _Nonnull stop) {
             if (obj.state == SYDownloadTaskStateDownloading || obj.state == SYDownloadTaskStateWaiting) {
                 obj.state = SYDownloadTaskStateSuspend;
@@ -125,5 +128,11 @@
     for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [hash appendFormat:@"%02X", result[i]];
     return [hash lowercaseString];
+}
++ (void)archiveObject:(id)object toPath:(NSString *)path{
+    [NSKeyedArchiver archiveRootObject:object toFile:path];
+}
++ (id)unArchiveObjectFromPath:(NSString *)path{
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 }
 @end
