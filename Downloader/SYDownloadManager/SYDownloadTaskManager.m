@@ -97,7 +97,7 @@
             SYDownloadTaskOperation *operation = (SYDownloadTaskOperation *)obj;
             [self.downloadOperationQueue syDelay_removeOperation:operation];
             [operation suspendTask];
-             [self _setTaskState:SYDownloadTaskStateSuspend forURL:operation.identify];
+            [self _setTaskState:SYDownloadTaskStateSuspend forURL:operation.identify];
         }];
     }
     self.session.configuration.allowsCellularAccess = allowsCellularAccess;
@@ -148,8 +148,8 @@
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error{
-    
-    NSString *url = task.currentRequest.URL.absoluteString;
+    //默认originalRequest和currentRequest是相同的，当重定向后currentRequest为最新的链接
+    NSString *url = task.originalRequest.URL.absoluteString;
     //完成、失败、暂停,都要调用completionTask，改变operation executing，并标识finished = YES 状态
     //当finished = yes 时,operation被queue自动移除
     [[self _taskOperationWithURLStr:url] completionTask];
@@ -162,7 +162,7 @@ didCompleteWithError:(nullable NSError *)error{
         [self _setTaskState:SYDownloadTaskStateFinshed forURL:url];
     }else{
         // -1009无网 -1001超时 -999取消
-         //并未取消任务
+        //并未取消任务
         if (error.code != -999) {
             if (error.code == -1009 && self.allowsCellularAccess == NO) {
                 [self _alertWithMessage:@"已禁止移动网络数据传输" actionTitles:@[@"取消",@"允许"] actionHandle:^(NSUInteger actionIndex) {
@@ -182,7 +182,7 @@ didCompleteWithError:(nullable NSError *)error{
 didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler{
     
-    NSString *urlKey = dataTask.currentRequest.URL.absoluteString;
+    NSString *urlKey = dataTask.originalRequest.URL.absoluteString;
     [self.taskStore openOutputStreamWithResponse:response forURL:urlKey];
     [self _setTaskState:SYDownloadTaskStateDownloading forURL:urlKey];
     completionHandler(NSURLSessionResponseAllow);
@@ -191,7 +191,7 @@ didReceiveResponse:(NSURLResponse *)response
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data{
     //收到数据
-    NSString *urlKey = dataTask.currentRequest.URL.absoluteString;
+    NSString *urlKey = dataTask.originalRequest.URL.absoluteString;
     [self.taskStore appenOutputStreamWithData:data forURL:urlKey];
     if (self.downloadTaskProgressHandle) {
         self.downloadTaskProgressHandle(urlKey, [self.taskStore taskModelWithURL:urlKey].progress);
@@ -201,7 +201,7 @@ didReceiveResponse:(NSURLResponse *)response
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response
         newRequest:(NSURLRequest *)request
  completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler{
-    //重定向
+    //允许重定向，newrequest是新的
     completionHandler(request);
 }
 
