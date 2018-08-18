@@ -149,7 +149,7 @@
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error{
     //默认originalRequest和currentRequest是相同的，当重定向后currentRequest为最新的链接
-    NSString *url = task.currentRequest.URL.absoluteString;
+    NSString *url = task.originalRequest.URL.absoluteString;
     //完成、失败、暂停,都要调用completionTask，改变operation executing，并标识finished = YES 状态
     //当finished = yes 时,operation被queue自动移除
     [[self _taskOperationWithURLStr:url] completionTask];
@@ -182,7 +182,7 @@ didCompleteWithError:(nullable NSError *)error{
 didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler{
     
-    NSString *urlKey = dataTask.currentRequest.URL.absoluteString;
+    NSString *urlKey = dataTask.originalRequest.URL.absoluteString;
     [self.taskStore openOutputStreamWithResponse:response forURL:urlKey];
     [self _setTaskState:SYDownloadTaskStateDownloading forURL:urlKey];
     completionHandler(NSURLSessionResponseAllow);
@@ -191,7 +191,7 @@ didReceiveResponse:(NSURLResponse *)response
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data{
     //收到数据
-    NSString *urlKey = dataTask.currentRequest.URL.absoluteString;
+    NSString *urlKey = dataTask.originalRequest.URL.absoluteString;
     [self.taskStore appenOutputStreamWithData:data forURL:urlKey];
     if (self.downloadTaskProgressHandle) {
         self.downloadTaskProgressHandle(urlKey, [self.taskStore taskModelWithURL:urlKey].progress);

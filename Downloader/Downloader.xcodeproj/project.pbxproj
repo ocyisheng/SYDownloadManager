@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D22A657205E6D8600788E5F /* SYDownloadTaskStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D22A656205E6D8600788E5F /* SYDownloadTaskStore.m */; };
+		5D0C395D2127D7C4002F20F0 /* SYDownloadTaskStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C39532127D7C4002F20F0 /* SYDownloadTaskStore.m */; };
+		5D0C395E2127D7C4002F20F0 /* SYDownloadTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C39572127D7C4002F20F0 /* SYDownloadTaskModel.m */; };
+		5D0C395F2127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C39592127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.m */; };
+		5D0C39602127D7C4002F20F0 /* SYDownloadTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C395A2127D7C4002F20F0 /* SYDownloadTaskManager.m */; };
+		5D0C39612127D7C4002F20F0 /* SYDownloadTaskOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C395B2127D7C4002F20F0 /* SYDownloadTaskOperation.m */; };
 		5D22A65A205F975A00788E5F /* DownloadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D22A659205F975A00788E5F /* DownloadTableViewCell.m */; };
 		5DBE97FA205A4A7D00A0F043 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBE97F9205A4A7D00A0F043 /* main.m */; };
 		5DBE97FD205A4A7D00A0F043 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBE97FC205A4A7D00A0F043 /* AppDelegate.m */; };
@@ -15,15 +19,19 @@
 		5DBE9803205A4A7D00A0F043 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DBE9801205A4A7D00A0F043 /* Main.storyboard */; };
 		5DBE9805205A4A7D00A0F043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DBE9804205A4A7D00A0F043 /* Assets.xcassets */; };
 		5DBE9808205A4A7D00A0F043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DBE9806205A4A7D00A0F043 /* LaunchScreen.storyboard */; };
-		5DBE9811205A676600A0F043 /* SYDownloadTaskOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBE9810205A676600A0F043 /* SYDownloadTaskOperation.m */; };
-		5DBE9814205ACD4200A0F043 /* SYDownloadTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBE9813205ACD4200A0F043 /* SYDownloadTaskManager.m */; };
-		5DBE9817205BABD600A0F043 /* SYDownloadTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBE9816205BABD600A0F043 /* SYDownloadTaskModel.m */; };
-		5DD12ED720615A4900CDEE53 /* NSOperationQueue+SYDelayAddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD12ED620615A4900CDEE53 /* NSOperationQueue+SYDelayAddOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5D22A655205E6D8600788E5F /* SYDownloadTaskStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskStore.h; sourceTree = "<group>"; };
-		5D22A656205E6D8600788E5F /* SYDownloadTaskStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskStore.m; sourceTree = "<group>"; };
+		5D0C39532127D7C4002F20F0 /* SYDownloadTaskStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskStore.m; sourceTree = "<group>"; };
+		5D0C39542127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+SYDelayAddOperation.h"; sourceTree = "<group>"; };
+		5D0C39552127D7C4002F20F0 /* SYDownloadTaskOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskOperation.h; sourceTree = "<group>"; };
+		5D0C39562127D7C4002F20F0 /* SYDownloadTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskManager.h; sourceTree = "<group>"; };
+		5D0C39572127D7C4002F20F0 /* SYDownloadTaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskModel.m; sourceTree = "<group>"; };
+		5D0C39582127D7C4002F20F0 /* SYDownloadTaskStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskStore.h; sourceTree = "<group>"; };
+		5D0C39592127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+SYDelayAddOperation.m"; sourceTree = "<group>"; };
+		5D0C395A2127D7C4002F20F0 /* SYDownloadTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskManager.m; sourceTree = "<group>"; };
+		5D0C395B2127D7C4002F20F0 /* SYDownloadTaskOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskOperation.m; sourceTree = "<group>"; };
+		5D0C395C2127D7C4002F20F0 /* SYDownloadTaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskModel.h; sourceTree = "<group>"; };
 		5D22A658205F975A00788E5F /* DownloadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTableViewCell.h; sourceTree = "<group>"; };
 		5D22A659205F975A00788E5F /* DownloadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTableViewCell.m; sourceTree = "<group>"; };
 		5DBE97F5205A4A7D00A0F043 /* Downloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Downloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,14 +44,6 @@
 		5DBE9804205A4A7D00A0F043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DBE9807205A4A7D00A0F043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DBE9809205A4A7D00A0F043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DBE980F205A676600A0F043 /* SYDownloadTaskOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskOperation.h; sourceTree = "<group>"; };
-		5DBE9810205A676600A0F043 /* SYDownloadTaskOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskOperation.m; sourceTree = "<group>"; };
-		5DBE9812205ACD4200A0F043 /* SYDownloadTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskManager.h; sourceTree = "<group>"; };
-		5DBE9813205ACD4200A0F043 /* SYDownloadTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskManager.m; sourceTree = "<group>"; };
-		5DBE9815205BABD600A0F043 /* SYDownloadTaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskModel.h; sourceTree = "<group>"; };
-		5DBE9816205BABD600A0F043 /* SYDownloadTaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskModel.m; sourceTree = "<group>"; };
-		5DD12ED520615A4900CDEE53 /* NSOperationQueue+SYDelayAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+SYDelayAddOperation.h"; sourceTree = "<group>"; };
-		5DD12ED620615A4900CDEE53 /* NSOperationQueue+SYDelayAddOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+SYDelayAddOperation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +57,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D0C39522127D7C4002F20F0 /* SYDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				5D0C39562127D7C4002F20F0 /* SYDownloadTaskManager.h */,
+				5D0C395A2127D7C4002F20F0 /* SYDownloadTaskManager.m */,
+				5D0C395C2127D7C4002F20F0 /* SYDownloadTaskModel.h */,
+				5D0C39572127D7C4002F20F0 /* SYDownloadTaskModel.m */,
+				5D0C39552127D7C4002F20F0 /* SYDownloadTaskOperation.h */,
+				5D0C395B2127D7C4002F20F0 /* SYDownloadTaskOperation.m */,
+				5D0C39582127D7C4002F20F0 /* SYDownloadTaskStore.h */,
+				5D0C39532127D7C4002F20F0 /* SYDownloadTaskStore.m */,
+				5D0C39542127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.h */,
+				5D0C39592127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.m */,
+			);
+			path = SYDownloadManager;
+			sourceTree = "<group>";
+		};
 		5DBE97EC205A4A7D00A0F043 = {
 			isa = PBXGroup;
 			children = (
+				5D0C39522127D7C4002F20F0 /* SYDownloadManager */,
 				5DBE97F7205A4A7D00A0F043 /* Downloader */,
 				5DBE97F6205A4A7D00A0F043 /* Products */,
 			);
@@ -82,16 +100,6 @@
 				5DBE97FF205A4A7D00A0F043 /* ViewController.m */,
 				5D22A658205F975A00788E5F /* DownloadTableViewCell.h */,
 				5D22A659205F975A00788E5F /* DownloadTableViewCell.m */,
-				5DBE9812205ACD4200A0F043 /* SYDownloadTaskManager.h */,
-				5DBE9813205ACD4200A0F043 /* SYDownloadTaskManager.m */,
-				5DD12ED520615A4900CDEE53 /* NSOperationQueue+SYDelayAddOperation.h */,
-				5DD12ED620615A4900CDEE53 /* NSOperationQueue+SYDelayAddOperation.m */,
-				5DBE980F205A676600A0F043 /* SYDownloadTaskOperation.h */,
-				5DBE9810205A676600A0F043 /* SYDownloadTaskOperation.m */,
-				5DBE9815205BABD600A0F043 /* SYDownloadTaskModel.h */,
-				5DBE9816205BABD600A0F043 /* SYDownloadTaskModel.m */,
-				5D22A655205E6D8600788E5F /* SYDownloadTaskStore.h */,
-				5D22A656205E6D8600788E5F /* SYDownloadTaskStore.m */,
 				5DBE9801205A4A7D00A0F043 /* Main.storyboard */,
 				5DBE9804205A4A7D00A0F043 /* Assets.xcassets */,
 				5DBE9806205A4A7D00A0F043 /* LaunchScreen.storyboard */,
@@ -181,15 +189,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D0C395F2127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.m in Sources */,
 				5DBE9800205A4A7D00A0F043 /* ViewController.m in Sources */,
-				5D22A657205E6D8600788E5F /* SYDownloadTaskStore.m in Sources */,
-				5DBE9811205A676600A0F043 /* SYDownloadTaskOperation.m in Sources */,
 				5DBE97FD205A4A7D00A0F043 /* AppDelegate.m in Sources */,
-				5DBE9814205ACD4200A0F043 /* SYDownloadTaskManager.m in Sources */,
 				5D22A65A205F975A00788E5F /* DownloadTableViewCell.m in Sources */,
-				5DBE9817205BABD600A0F043 /* SYDownloadTaskModel.m in Sources */,
+				5D0C39602127D7C4002F20F0 /* SYDownloadTaskManager.m in Sources */,
+				5D0C39612127D7C4002F20F0 /* SYDownloadTaskOperation.m in Sources */,
+				5D0C395D2127D7C4002F20F0 /* SYDownloadTaskStore.m in Sources */,
+				5D0C395E2127D7C4002F20F0 /* SYDownloadTaskModel.m in Sources */,
 				5DBE97FA205A4A7D00A0F043 /* main.m in Sources */,
-				5DD12ED720615A4900CDEE53 /* NSOperationQueue+SYDelayAddOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
