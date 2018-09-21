@@ -12,9 +12,9 @@
 #import "NSOperationQueue+SYDelayAddOperation.h"
 
 @interface SYDownloadTaskManager ()<NSURLSessionDataDelegate>
-@property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, strong) NSOperationQueue *downloadOperationQueue;
-@property (nonatomic, strong) SYDownloadTaskStore *taskStore;//数据储存的
+@property (nonatomic, strong) NSURLSession *session;//下载任务的会话
+@property (nonatomic, strong) NSOperationQueue *downloadOperationQueue;//控制xi
+@property (nonatomic, strong) SYDownloadTaskStore *taskStore;//数据操作的仓库
 @end
 
 @implementation SYDownloadTaskManager
@@ -34,6 +34,7 @@
     }
     return self;
 }
+#pragma mark - Public Func
 - (NSString *)locationPathWithURLStr:(NSString *)url{
     return [self.taskStore cacheFilePathWithURL:url];
 }
@@ -102,6 +103,8 @@
     }
     self.session.configuration.allowsCellularAccess = allowsCellularAccess;
 }
+
+#pragma mark - Private Func
 - (void)_setTaskState:(SYDownloadTaskState)state forURL:(NSString *)url{
     [self.taskStore taskModelWithURL:url].state = state;
     if (self.downloadTaskStateChangedHandle) {
@@ -146,8 +149,7 @@
     NSLog(@"%@",error);
 }
 
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
-didCompleteWithError:(nullable NSError *)error{
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error{
     //默认originalRequest和currentRequest是相同的，当重定向后currentRequest为最新的链接
     NSString *url = task.originalRequest.URL.absoluteString;
     //完成、失败、暂停,都要调用completionTask，改变operation executing，并标识finished = YES 状态
@@ -178,9 +180,7 @@ didCompleteWithError:(nullable NSError *)error{
     }
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
-didReceiveResponse:(NSURLResponse *)response
- completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler{
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler{
     
     NSString *urlKey = dataTask.originalRequest.URL.absoluteString;
     [self.taskStore openOutputStreamWithResponse:response forURL:urlKey];
