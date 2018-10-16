@@ -109,10 +109,7 @@
                        @"http://xunleia.zuida360.com/1801/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E08.mp4",
                        @"http://xunleia.zuida360.com/1801/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E09.mp4",
                        @"http://xunleia.zuida360.com/1802/%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5S05E10.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/ld.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/rrz.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/sybzxls.mp4",
-                       @"http://app.datuhongan.com/uploads/video/201612/sjxymgh.mp4"];
+                       @"http://app.datuhongan.com/uploads/video/201612/ld.mp4"];
 
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
