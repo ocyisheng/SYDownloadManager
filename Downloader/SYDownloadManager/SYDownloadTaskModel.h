@@ -38,4 +38,9 @@ typedef NS_ENUM(NSInteger,SYDownloadTaskState) {
 @property (nonatomic, assign) float progress;
 //状态
 @property (nonatomic, assign) SYDownloadTaskState state;
+
+//分片下标
+@property (nonatomic, assign) NSUInteger segmentIndex;
+//分片数量
+@property (nonatomic, assign) NSUInteger segmentCount;
 @end

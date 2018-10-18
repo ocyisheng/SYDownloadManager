@@ -10,7 +10,6 @@
 		3E0A73812175DCE400458514 /* SYGCDDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A73802175DCE400458514 /* SYGCDDownloadManager.m */; };
 		3E0A73842175DE1C00458514 /* SYGCDDownloadDataTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A73832175DE1C00458514 /* SYGCDDownloadDataTask.m */; };
 		3E0A73872175E25800458514 /* SYGCDDownloadTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A73862175E25800458514 /* SYGCDDownloadTaskModel.m */; };
-		3E0A738A2175E86200458514 /* SYGCDDownloadGroupTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A73892175E86200458514 /* SYGCDDownloadGroupTaskModel.m */; };
 		5D0C395D2127D7C4002F20F0 /* SYDownloadTaskStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C39532127D7C4002F20F0 /* SYDownloadTaskStore.m */; };
 		5D0C395E2127D7C4002F20F0 /* SYDownloadTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C39572127D7C4002F20F0 /* SYDownloadTaskModel.m */; };
 		5D0C395F2127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C39592127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.m */; };
@@ -32,8 +31,6 @@
 		3E0A73832175DE1C00458514 /* SYGCDDownloadDataTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGCDDownloadDataTask.m; sourceTree = "<group>"; };
 		3E0A73852175E25800458514 /* SYGCDDownloadTaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGCDDownloadTaskModel.h; sourceTree = "<group>"; };
 		3E0A73862175E25800458514 /* SYGCDDownloadTaskModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGCDDownloadTaskModel.m; sourceTree = "<group>"; };
-		3E0A73882175E86200458514 /* SYGCDDownloadGroupTaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYGCDDownloadGroupTaskModel.h; sourceTree = "<group>"; };
-		3E0A73892175E86200458514 /* SYGCDDownloadGroupTaskModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYGCDDownloadGroupTaskModel.m; sourceTree = "<group>"; };
 		5D0C39532127D7C4002F20F0 /* SYDownloadTaskStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskStore.m; sourceTree = "<group>"; };
 		5D0C39542127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+SYDelayAddOperation.h"; sourceTree = "<group>"; };
 		5D0C39552127D7C4002F20F0 /* SYDownloadTaskOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskOperation.h; sourceTree = "<group>"; };
@@ -78,8 +75,6 @@
 				3E0A73832175DE1C00458514 /* SYGCDDownloadDataTask.m */,
 				3E0A73852175E25800458514 /* SYGCDDownloadTaskModel.h */,
 				3E0A73862175E25800458514 /* SYGCDDownloadTaskModel.m */,
-				3E0A73882175E86200458514 /* SYGCDDownloadGroupTaskModel.h */,
-				3E0A73892175E86200458514 /* SYGCDDownloadGroupTaskModel.m */,
 			);
 			path = SYGCDDownloadManager;
 			sourceTree = "<group>";
@@ -226,7 +221,6 @@
 				5D0C39612127D7C4002F20F0 /* SYDownloadTaskOperation.m in Sources */,
 				3E0A73842175DE1C00458514 /* SYGCDDownloadDataTask.m in Sources */,
 				3E0A73812175DCE400458514 /* SYGCDDownloadManager.m in Sources */,
-				3E0A738A2175E86200458514 /* SYGCDDownloadGroupTaskModel.m in Sources */,
 				5D0C395D2127D7C4002F20F0 /* SYDownloadTaskStore.m in Sources */,
 				5D0C395E2127D7C4002F20F0 /* SYDownloadTaskModel.m in Sources */,
 				5DBE97FA205A4A7D00A0F043 /* main.m in Sources */,
