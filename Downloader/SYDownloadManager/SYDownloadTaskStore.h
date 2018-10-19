@@ -17,15 +17,15 @@
  @param url 任务的链接
  @param type 文件的扩展名
  */
-- (void)addTaskModeWithURLStr:(NSString *)url
-                     type:(NSString *)type;
+- (void)addTaskModeWithURLStr:(NSString *__nullable)url
+                     type:(NSString *__nullable)type;
 
 /**
  删除任务模型
 
  @param url 任务的链接
  */
-- (void)deleteTaskModelWithURLStr:(NSString *)url;
+- (void)deleteTaskModelWithURLStr:(NSString *__nullable)url;
 
 /**
  开启输出流
@@ -33,8 +33,8 @@
  @param response 响应实例
  @param url 任务的链接
  */
-- (void)openOutputStreamWithResponse:(NSURLResponse *)response
-                              forURL:(NSString *)url;
+- (void)openOutputStreamWithResponse:(NSURLResponse *__nullable)response
+                              forURL:(NSString *__nullable)url;
 
 /**
  添加输出流数据
@@ -42,15 +42,15 @@
  @param data 流数据
  @param url 任务的链接
  */
-- (void)appenOutputStreamWithData:(NSData *)data
-                           forURL:(NSString *)url;
+- (void)appenOutputStreamWithData:(NSData *__nullable)data
+                           forURL:(NSString *__nullable)url;
 
 /**
  关闭输出流
 
  @param url 任务的链接
  */
-- (void)closeOutputStreamWithURLStr:(NSString *)url;
+- (void)closeOutputStreamWithURLStr:(NSString *__nullable)url;
 
 /**
  获取任务模型
@@ -58,14 +58,14 @@
  @param url 任务的链接
  @return SYDownloadTaskModel
  */
-- (SYDownloadTaskModel *)taskModelWithURL:(NSString *)url;
+- (SYDownloadTaskModel *__nullable)taskModelWithURL:(NSString *__nullable)url;
 
 /**
  获取所有的任务模型 value = SYDownloadTaskModel ，key = url
 
  @return NSDictionary
  */
-- (NSDictionary<NSString *,SYDownloadTaskModel *> *)taskModels;
+- (NSDictionary<NSString *,SYDownloadTaskModel *> *__nullable)taskModels;
 
 /**
  获取下载任务的本地储存路径
@@ -73,5 +73,5 @@
  @param url 任务的链接
  @return NSString 储存路径
  */
-- (NSString *)cacheFilePathWithURL:(NSString *)url;
+- (NSString *__nullable)cacheFilePathWithURL:(NSString *__nullable)url;
 @end

@@ -25,11 +25,11 @@ typedef NS_ENUM(NSInteger,SYDownloadTaskState) {
 };
 @interface SYDownloadTaskModel : NSObject<NSCoding>
 //下载链接
-@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *__nullable url;
 //文件的扩展名
-@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *__nullable type;
 //缓存文件名称
-@property (nonatomic, copy) NSString *cacheFileName;
+@property (nonatomic, copy) NSString *__nullable cacheFileName;
 //总大小
 @property (nonatomic, assign) long long totalSize;
 //当前下载大小

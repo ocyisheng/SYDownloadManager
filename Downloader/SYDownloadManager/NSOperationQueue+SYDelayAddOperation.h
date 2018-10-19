@@ -26,9 +26,9 @@
  */
 
 ///移除操作
-- (void)syDelay_removeOperation:(NSOperation *)operation;
+- (void)syDelay_removeOperation:(NSOperation *__nullable)operation;
 ///添加操作
-- (void)syDelay_addOperation:(NSOperation *)operation;
+- (void)syDelay_addOperation:(NSOperation *__nullable)operation;
 ///获取所有操作，包含waiting的
-- (NSArray<NSOperation *> *)syDelay_operations;
+- (NSArray<NSOperation *> *__nullable)syDelay_operations;
 @end

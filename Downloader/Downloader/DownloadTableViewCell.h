@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface DownloadTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *__nullable nameLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *__nullable stateLabel;
 
-@property (weak, nonatomic) IBOutlet UIProgressView *progress;
+@property (weak, nonatomic) IBOutlet UIProgressView *__nullable progress;
 @end

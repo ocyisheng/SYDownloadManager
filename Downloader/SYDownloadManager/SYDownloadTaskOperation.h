@@ -10,9 +10,9 @@
 
 @interface SYDownloadTaskOperation : NSOperation
 ///url作为identify
-@property (nonatomic, copy, readonly) NSString *identify;
+@property (nonatomic, copy, readonly) NSString *__nullable identify;
 ///添加任务
-- (instancetype)initWithDataTask:(NSURLSessionDataTask *)dataTask;
+- (instancetype)initWithDataTask:(NSURLSessionDataTask *__nullable)dataTask;
 ///暂停任务
 - (void)suspendTask;
 ///删除任务
