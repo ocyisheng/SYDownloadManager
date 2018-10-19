@@ -1,3 +1,5 @@
+# 兼容swift
+19-10-2018 兼容swift并添加测试demo
 # bug修复
 7-24-2018 修复重定向导致的崩溃或链接不可用
 # SYDownloadManager
