@@ -22,7 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3E0A73F321788D8F00458514 /* Downloader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Downloader-Bridging-Header.h"; sourceTree = "<group>"; };
 		5D0C39532127D7C4002F20F0 /* SYDownloadTaskStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDownloadTaskStore.m; sourceTree = "<group>"; };
 		5D0C39542127D7C4002F20F0 /* NSOperationQueue+SYDelayAddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+SYDelayAddOperation.h"; sourceTree = "<group>"; };
 		5D0C39552127D7C4002F20F0 /* SYDownloadTaskOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDownloadTaskOperation.h; sourceTree = "<group>"; };
@@ -106,7 +105,6 @@
 				5DBE9806205A4A7D00A0F043 /* LaunchScreen.storyboard */,
 				5DBE9809205A4A7D00A0F043 /* Info.plist */,
 				5DBE97F8205A4A7D00A0F043 /* Supporting Files */,
-				3E0A73F321788D8F00458514 /* Downloader-Bridging-Header.h */,
 			);
 			path = Downloader;
 			sourceTree = "<group>";

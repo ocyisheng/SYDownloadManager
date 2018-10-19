@@ -10,7 +10,6 @@
 
 #import "SYDownloadTaskManager.h"
 #import "DownloadTableViewCell.h"
-#import "Downloader-Bridging-Header.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSInteger _ticketCont;
