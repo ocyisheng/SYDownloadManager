@@ -1,5 +1,6 @@
 # 兼容swift
 1.10-19-2018 兼容swift并添加测试demo
+
 2. swift语言版本请看 https://github.com/ocyisheng/SYDownloadManager-swift.git
 
 # bug修复
